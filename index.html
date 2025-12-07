@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Aloabid's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Main Header -->
+  <p class="section fade-in">Ibrahim Aloabid</p><br>
+  <p class="section fade-in" id="counter">you have been on the website for: </p><br>
+
+  <!-- Toggle button for header -->
+  <button class="section-toggle" data-target="header-section">
+    <span class="toggle-icon">▼</span> Toggle Navigation
+  </button>
+
+  <!-- Navigation Header -->
+  <header class="container fade-in" id="header-section">
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <div id="user-controls">
+      <span id="login-status">Logged Out</span>
+      <button id="login-btn">Login</button>
+      <input type="text" id="visitor-name" placeholder="Enter your name">
+      <p id="greeting">Welcome, Guest!</p>
+    </div>
+
+    <button id="theme-toggle">Toggle Theme (dark/light)</button>
+  </header>
+
+  <!-- About Section -->
+  <br>
+  <button class="section-toggle" data-target="about-section">
+    <span class="toggle-icon">▼</span> Toggle About Me
+  </button>
+  
+  <p class="section fade-in" id="about">About Me</p><br>
+
+  <section class="container fade-in" id="about-section">
+    <img src="assets/guy coding.jpg" alt="Ibrahim Aloabid" class="photo fade-in">
+    <p class="fade-in">
+      Hello! I'm Ibrahim Aloabid, a passionate web developer with experience in creating dynamic and
+      responsive websites. I love coding and continuously learning new technologies.
+      I have a special interest in front-end development and user experience design.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <button class="section-toggle" data-target="projects-section">
+    <span class="toggle-icon">▼</span> Toggle Projects
+  </button>
+
+  <p class="section fade-in" id="projects">Projects</p><br>
+
+  <div id="projects-section">
+    <!-- Skill Level Selection -->
+    <div class="skill-level-selector fade-in">
+      <h3>Choose Your Level:</h3>
+      <div class="level-buttons">
+        <button class="level-btn active" data-level="all">All Projects</button>
+        <button class="level-btn" data-level="beginner">Beginner</button>
+        <button class="level-btn" data-level="intermediate">Intermediate</button>
+        <button class="level-btn" data-level="advanced">Advanced</button>
+      </div>
+    </div>
+
+    <!-- Filter and Sort Controls -->
+    <div class="controls fade-in">
+      <div class="filter-group">
+        <label>Category:</label>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+      </div>
+
+      <div class="sort-group">
+        <label>Sort by:</label>
+        <select class="sort-select" id="sortSelect">
+          <option value="date-desc">Date (Newest)</option>
+          <option value="date-asc">Date (Oldest)</option>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dynamic Message -->
+    <div class="level-message fade-in" id="levelMessage">
+      <p class="message-text">Showing all projects. Select a skill level to see tailored recommendations!</p>
+    </div>
+
+    <!-- Projects Container -->
+    <section class="container fade-in" id="projects-container">
+      <!-- Project 1 -->
+      <div class="project fade-in" data-category="web" data-date="2024-03-15" data-name="Portfolio Website" data-level="beginner">
+        <div class="difficulty-badge beginner">Beginner</div>
+        <h3>Project 1: Portfolio Website <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          A personal portfolio website showcasing my skills and projects.<br>
+          Built with HTML, CSS, and JavaScript.<br>
+          <strong>Perfect for:</strong> Learning basic web fundamentals and responsive design.
+        </p>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project fade-in" data-category="web" data-date="2024-02-20" data-name="To-Do List App" data-level="intermediate">
+        <div class="difficulty-badge intermediate">Intermediate</div>
+        <h3>Project 2: To-Do List App <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          A simple to-do list application that allows users to add, delete, and mark tasks as completed.<br>
+          Built with React.<br>
+          <strong>Perfect for:</strong> Understanding state management and component-based architecture.
+        </p>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project fade-in" data-category="backend" data-date="2024-01-10" data-name="E-commerce Website" data-level="advanced">
+        <div class="difficulty-badge advanced">Advanced</div>
+        <h3>Project 3: E-commerce Website <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          An e-commerce website with product listings, shopping cart, and checkout functionality.<br>
+          Built with Node.js and Express.<br>
+          <strong>Perfect for:</strong> Mastering full-stack development, databases, and payment integration.
+        </p>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project fade-in" data-category="web" data-date="2024-04-01" data-name="Landing Page" data-level="beginner">
+        <div class="difficulty-badge beginner">Beginner</div>
+        <h3>Project 4: Landing Page <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          A modern landing page with animations and contact form.<br>
+          Built with HTML, CSS, and JavaScript.<br>
+          <strong>Perfect for:</strong> Practicing layout design and CSS animations.
+        </p>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project fade-in" data-category="mobile" data-date="2024-03-10" data-name="Weather App" data-level="intermediate">
+        <div class="difficulty-badge intermediate">Intermediate</div>
+        <h3>Project 5: Weather App <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          A mobile weather application that displays current weather and forecasts.<br>
+          Built with React Native.<br>
+          <strong>Perfect for:</strong> Learning API integration and mobile development.
+        </p>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project fade-in" data-category="backend" data-date="2024-02-05" data-name="REST API Service" data-level="advanced">
+        <div class="difficulty-badge advanced">Advanced</div>
+        <h3>Project 6: REST API Service <span class="arrow">▶</span></h3>
+        <img src="assets/download.png" alt="Placeholder image" class="fade-in">
+        <p class="description fade-in">
+          A RESTful API service with authentication, database integration, and deployment.<br>
+          Built with Python and FastAPI.<br>
+          <strong>Perfect for:</strong> Building scalable backend systems and microservices.
+        </p>
+      </div>
+    </section>
+
+    <!-- Empty state message -->
+    <p id="empty-projects" style="display:none; text-align:center; color:gray; font-style:italic;">
+      No projects found.
+    </p>
+  </div>
+
+  <!-- Contact Section -->
+  <button class="section-toggle" data-target="contact-section">
+    <span class="toggle-icon">▼</span> Toggle Contact
+  </button>
+  
+  <p class="section fade-in" id="contact">Contact Me!</p><br>
+  
+  <section class="container fade-in" id="contact-section">
+    <form id="contact-form" class="fade-in">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" required></textarea><br><br>
+
+      <button type="submit">Send</button>
+      
+      <p id="form-status"></p>
+    </form>
+  </section>
+
+  <!-- Quotes Section -->
+  <button class="section-toggle" data-target="quote-section">
+    <span class="toggle-icon">▼</span> Toggle Quotes
+  </button>
+  
+  <p class="section fade-in" id="quote">inspirational quotes</p><br>
+  
+  <section class="container fade-in" id="quote-section">
+    <!-- Error Display -->
+    <div id="quote-error" style="display: none; text-align: center; padding: 20px;">
+      <p style="color: #721c24; font-size: 18px;">⚠️ Failed to load</p>
+      <button id="retry-quote" class="retry-btn">Retry</button>
+    </div>
+
+    <!-- Quote Display -->
+    <div id="quote-content" style="display: none; text-align: center; padding: 20px;">
+      <p id="quote-text" style="font-size: 18px; line-height: 1.6;"></p>
+    </div>
+  </section>
+</body>
+</html>

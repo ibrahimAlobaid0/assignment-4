@@ -1,0 +1,527 @@
+/* ===========================================
+   GLOBAL STYLES & THEMES
+   =========================================== */
+
+/* Light Theme (Default) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Dark theme container adjustments */
+body.dark-theme .container {
+  border-color: #444;
+  box-shadow: none;
+}
+
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+.section {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #470909;
+  transition: color 0.4s ease;
+}
+
+/* Section headings in dark theme */
+body.dark-theme .section {
+  color: #f5f5f5;
+}
+
+/* ===========================================
+   CONTAINERS AND LAYOUT
+   =========================================== */
+.container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px lightgray;
+  padding: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===========================================
+   PHOTO STYLING
+   =========================================== */
+.photo {
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 100%;
+  box-shadow: 3px 3px 3px lightgray;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo:hover {
+  transform: scale(1.02);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================================
+   PROJECT CARDS
+   =========================================== */
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 5px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px lightgray;
+  padding: 15px;
+  width: 300px;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.03);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Expandable project header and arrow */
+.project h3 {
+  cursor: pointer;
+  color: #007acc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.project h3:hover {
+  color: #011c2f;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when expanded */
+.project.active .arrow {
+  transform: rotate(90deg);
+}
+
+/* Hidden project description */
+.description {
+  display: none;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+/* ===========================================
+   BUTTON STYLING
+   =========================================== */
+button {
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+/* ===========================================
+   FADE-IN ANIMATION (on scroll)
+   =========================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================================
+   SMOOTH SCROLLING
+   =========================================== */
+html{
+  scroll-behavior: smooth;
+}
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .photo {
+    width: 90%;
+  }
+
+  .project {
+    width: 90%;
+  }
+}
+
+/* ===========================================
+   FORM STATUS MESSAGE ANIMATIONS
+   =========================================== */
+#form-status {
+  opacity: 0;  /* Start invisible */
+  transform: translateY(-10px);  /* Start above */
+  transition: opacity 0.4s ease, transform 0.4s ease;  /* Smooth transition */
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#form-status.show {
+  opacity: 1;  /* Fade to visible */
+  transform: translateY(0);  /* Slide down */
+}
+
+/* Success message styling */
+#form-status.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+#form-status.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  animation: shake 0.5s;
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Dark theme adjustment */
+body.dark-theme #form-status.success {
+  background-color: #1e4620;
+  color: #a3d9a5;
+  border-color: #2d5f2e;
+}
+
+body.dark-theme #form-status.error {
+  background-color: #4a1c1c;
+  color: #f5a9a9;
+  border-color: #6b2929;
+}
+
+
+
+
+/* loading spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007acc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #666;
+}
+
+body.dark-theme .loading-text {
+  color: #ccc;
+}
+
+body.dark-theme .spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #4a9eff;
+}
+
+.retry-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.retry-btn:hover {
+  background-color: #5a6268;
+}
+
+
+
+/* ===========================================
+   FILTER AND SORT CONTROLS
+   =========================================== */
+
+ .skill-level-selector {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 16px;
+  }
+
+  .skill-level-selector h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .level-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .level-btn {
+    padding: 12px 28px;
+    border: 2px solid #667eea;
+    background: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #667eea;
+    transition: all 0.3s ease;
+  }
+
+  .level-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  }
+
+  .level-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .level-message {
+    max-width: 1200px;
+    margin: 0 auto 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .message-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .controls {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filter-group, .sort-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+  }
+
+  .filter-group label, .sort-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .filter-btn, .sort-select {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .filter-btn {
+    background: rgba(255,255,255,0.9);
+  }
+
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .filter-btn.active {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .sort-select {
+    background: rgba(255,255,255,0.9);
+    padding: 8px 12px;
+  }
+
+  .project {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .project.hidden {
+    display: none;
+  }
+
+
+
+  .difficulty-badge.beginner {
+    background: #10b981;
+    color: white;
+  }
+
+  .difficulty-badge.intermediate {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .difficulty-badge.advanced {
+    background: #ef4444;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .controls {
+      flex-direction: column;
+    }
+
+    .filter-group, .sort-group {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .level-buttons {
+      flex-direction: column;
+    }
+
+    .level-btn {
+      width: 100%;
+    }
+  }
+
+
+/* ===========================================
+   USER LOGIN STATUS STYLES
+   =========================================== */
+  #user-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#login-status {
+  font-weight: bold;
+}
+
+#visitor-name {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#greeting {
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+
+
+
+/* Section toggle buttons */
+.section-toggle {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.section-toggle:active {
+  transform: translateY(0);
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.section-toggle.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+/* Smooth transition for sections */
+.section-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.section-content.hidden {
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+/* ========================= */
+/* ===========================================
+   END OF STYLE.CSS
+   =========================================== */
