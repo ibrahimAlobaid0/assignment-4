@@ -97,7 +97,7 @@ function checkProjects() {
 4. **Kept Control**: Used AI as assistant, not code generator
 
 ### What I Rejected
-Complex animation libraries—kept it vanilla JavaScript  
+Complex animation libraries—kept it JavaScript  
 Advanced form frameworks—built custom validation  
 Unnecessary features—stayed focused on requirements
 
@@ -126,9 +126,10 @@ Unnecessary features—stayed focused on requirements
 ### Before AI
 - Basic static HTML
 - No form validation
-- No animations
+- little animations
 - Theme didn't persist
-- No documentation
+- little documentation
+- unaware how to develop advanced features
 
 ### After AI
 - Validated form with error messages
@@ -136,6 +137,7 @@ Unnecessary features—stayed focused on requirements
 - persistent theme preference
 - fade effects
 - Complete documentation
+- advanced features
 
 
 

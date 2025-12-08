@@ -34,8 +34,8 @@ Modern, responsive portfolio showcasing web development projects with comprehens
 
 1. **Clone the repository**:
 ```bash
-   git clone https://github.com/ibrahimAlobaid0/assignment-3.git
-   cd assignment-3
+   git clone https://github.com/ibrahimAlobaid0/assignment-4.git
+   cd assignment-4
 ```
 
 2. **Open the website**:
@@ -69,13 +69,37 @@ Chrome, Firefox, Safari, Edge + mobile browsers
 - High contrast in both themes
 
 ##  User Experience
+Navigate – Click menu links or scroll to move between sections
 
-Immediate visual feedback  
-Clear error messages  
-Loading indicators  
-Error recovery options  
-Smooth animations  
-Persistent preferences 
+Switch theme – Click the moon/sun icon in top-right to toggle dark/light mode
+
+View projects – Click any project card to expand details
+
+Key Features
+Filter projects – Use dropdowns to filter by skill level or type
+
+Sort projects – Choose "Newest First" or "A-Z" to reorder
+
+Contact form – Fill and submit to send a message (validation included)
+
+Collapse sections – Click section headers to show/hide content
+
+Tips
+Your theme preference saves automatically
+
+Invalid form fields show red borders with helpful messages
+
+Check your visit duration in the footer timer
+
+All interactive elements work with keyboard (Tab/Enter)
+
+Need Help?
+Refresh page if something seems stuck
+
+Ensure JavaScript is enabled in your browser
+
+Use Chrome/Firefox/Safari/Edge for best experience
+..
 
 ## Features
 
@@ -92,7 +116,7 @@ User System: Login functionality with personalized greetings
 
 ## Performance
 
-Lighthouse Score: 99/100
+Lighthouse Score: 100/100 (see assets/performance.png)
 
 
 ##  AI Assistance

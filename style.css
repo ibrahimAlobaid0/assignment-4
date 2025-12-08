@@ -78,52 +78,186 @@ body.dark-theme .section {
    PROJECT CARDS
    =========================================== */
 .project {
+  width: 320px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* 3D flip card layout */
+.project-card {
+  position: relative;
+}
+
+.voice-nav {
+  max-width: 800px;
+  margin: 10px auto 20px;
+  padding: 10px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+#voice-status {
+  font-weight: 600;
+  color: #334155;
+}
+
+body.dark-theme .voice-nav {
+  background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme #voice-status {
+  color: #cbd5e1;
+}
+
+.card-3d {
+  position: relative;
+  width: 100%;
+  perspective: 1400px;
+  min-height: 430px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.card-3d.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  border: 5px solid lightgray;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px lightgray;
-  padding: 15px;
-  width: 300px;
-  gap: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project:hover {
-  transform: scale(1.03);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Expandable project header and arrow */
-.project h3 {
-  cursor: pointer;
-  color: #007acc;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  transition: color 0.3s ease;
+  gap: 14px;
+  padding: 42px 18px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  backface-visibility: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+  transform-style: preserve-3d;
 }
 
-.project h3:hover {
-  color: #011c2f;
+.card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.arrow {
-  transition: transform 0.3s ease;
+.card-front h3,
+.card-back h3 {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0 72px 0 18px;
+  color: #0f172a;
 }
 
-/* Rotate arrow when expanded */
-.project.active .arrow {
-  transform: rotate(90deg);
+.card-back h3 {
+  color: #f1f5f9;
 }
 
-/* Hidden project description */
-.description {
-  display: none;
-  margin-top: 10px;
-  transition: all 0.3s ease;
+.tagline {
+  margin: 0;
+  color: #334155;
+  font-weight: 600;
+}
+
+.details {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.back-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-3d:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 6px;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.flip-btn {
+  align-self: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.flip-btn:hover {
+  background: linear-gradient(135deg, #6b8bff 0%, #8b5cf6 100%);
+  transform: translateY(-2px);
+}
+
+.flip-btn.flip-back {
+  background: #0ea5e9;
+}
+
+.flip-btn.flip-back:hover {
+  background: #0284c7;
+}
+
+.difficulty-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-theme .card-face {
+  background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .card-back {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+body.dark-theme .card-front h3 {
+  color: #e2e8f0;
+}
+
+body.dark-theme .tagline,
+body.dark-theme .details {
+  color: #cbd5e1;
 }
 
 /* ===========================================
@@ -178,6 +312,15 @@ html{
 
   .project {
     width: 90%;
+  }
+
+  .card-3d,
+  .card-inner {
+    min-height: 380px;
+  }
+
+  .project-card img {
+    height: 160px;
   }
 }
 
@@ -521,7 +664,6 @@ body.dark-theme .spinner {
   opacity: 0;
 }
 
-/* ========================= */
 /* ===========================================
    END OF STYLE.CSS
    =========================================== */

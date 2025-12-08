@@ -16,6 +16,93 @@ themeToggleButton.addEventListener('click', () => {
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark-theme');
 }
+
+/* ===========================================================
+   VOICE NAVIGATION (Show projects / Tell me about Ibrahim)
+   =========================================================== */
+const voiceButton = document.getElementById('voice-btn');
+const voiceStatus = document.getElementById('voice-status');
+const voicePrompt = 'Try: "Show me projects", "Tell me about Ibrahim", "Show me contact", "Show quotes", or "Show navigation".';
+const voiceCommands = [
+  { id: 'projects-section', status: 'Opening projects...', keywords: ['project'] },
+  { id: 'about-section', status: 'Showing About Ibrahim...', keywords: ['ibrahim', 'about'] },
+  { id: 'contact-section', status: 'Opening contact...', keywords: ['contact'] },
+  { id: 'quote-section', status: 'Showing quotes...', keywords: ['quote', 'quotes', 'inspiration'] },
+  { id: 'header-section', status: 'Opening navigation...', keywords: ['navigation', 'nav', 'menu', 'top'] },
+];
+
+if (voiceStatus) {
+  voiceStatus.textContent = voicePrompt;
+}
+
+const ensureSectionVisible = targetId => {
+  const section = document.getElementById(targetId);
+  if (!section) return;
+  section.style.display = '';
+
+  const toggleBtn = document.querySelector(`.section-toggle[data-target="${targetId}"]`);
+  if (toggleBtn) toggleBtn.classList.remove('collapsed');
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+const handleVoiceCommand = phrase => {
+  if (!voiceStatus) return;
+  const command = phrase.toLowerCase();
+
+  const match = voiceCommands.find(entry => entry.keywords.some(word => command.includes(word)));
+
+  if (match) {
+    voiceStatus.textContent = match.status;
+    ensureSectionVisible(match.id);
+  } else {
+    voiceStatus.textContent = voicePrompt;
+  }
+};
+
+if (voiceButton && voiceStatus) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    voiceStatus.textContent = 'Voice navigation not supported in this browser.';
+    voiceButton.disabled = true;
+  } else {
+    const recognition = new SpeechRecognition();
+    let listening = false;
+
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 3;
+
+    voiceButton.addEventListener('click', () => {
+      if (listening) return;
+      listening = true;
+      voiceStatus.textContent = 'Listening...';
+      recognition.start();
+    });
+
+    recognition.addEventListener('result', event => {
+      const transcript = Array.from(event.results)
+        .map(result => result[0].transcript)
+        .join(' ')
+        .trim();
+      handleVoiceCommand(transcript);
+    });
+
+    recognition.addEventListener('error', event => {
+      voiceStatus.textContent = event.error === 'no-speech'
+        ? 'No speech detected. Try again.'
+        : `Voice error: ${event.error || 'please try again.'}`;
+    });
+
+    recognition.addEventListener('end', () => {
+      listening = false;
+      if (voiceStatus.textContent === 'Listening...') {
+        voiceStatus.textContent = voicePrompt;
+      }
+    });
+  }
+}
 /* ===========================================================
 counter for how long the user has been on the website, as required
    =========================================================== */
@@ -34,19 +121,47 @@ setInterval(() => {
 , 1000);
 
 /* ===========================================================
-   EXPANDABLE / COLLAPSIBLE PROJECT SECTIONS
+   3D FLIP PROJECT CARDS (hover + click/focus for touch)
    =========================================================== */
-document.querySelectorAll(".project h3").forEach(title => {
-  title.addEventListener("click", () => {
-    const project = title.parentElement;
-    const description = project.querySelector(".description");
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.card-3d');
 
-    // Toggle visibility
-    const isVisible = description.style.display === "block";
-    description.style.display = isVisible ? "none" : "block";
+  cards.forEach(card => {
+    const openButtons = card.querySelectorAll('.flip-btn:not(.flip-back)');
+    const closeButtons = card.querySelectorAll('.flip-back');
 
-    // Toggle arrow rotation
-    project.classList.toggle("active", !isVisible);
+    const setFlipped = state => {
+      card.classList.toggle('flipped', state);
+    };
+
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', event => {
+        event.stopPropagation();
+        setFlipped(true);
+      });
+    });
+
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', event => {
+        event.stopPropagation();
+        setFlipped(false);
+      });
+    });
+
+    card.addEventListener('click', event => {
+      if (event.target.closest('button')) return;
+      setFlipped(!card.classList.contains('flipped'));
+    });
+
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setFlipped(!card.classList.contains('flipped'));
+      }
+      if (event.key === 'Escape') {
+        setFlipped(false);
+      }
+    });
   });
 });
 

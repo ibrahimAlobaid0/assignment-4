@@ -1,7 +1,7 @@
 # Portfolio Website - Technical Documentation
 
 ## Overview
-Personal portfolio featuring responsive design, theme switching, scroll animations, dynamic project filtering, and form validation with comprehensive error handling.
+Personal portfolio featuring responsive design, theme switching, scroll animations, dynamic project filtering,  form validation with comprehensive error handling, and other advanced features
 
 ## Architecture
 
@@ -177,6 +177,6 @@ setInterval(() => {
 ```
 
 ## Performance
-- **Lighthouse Score**: 99/100
+- **Lighthouse Score**: 100/100 (see assets/performance.png)
 - Optimizations: Deferred scripts, CSS animations over JS
 - See `assets/performance.png`
